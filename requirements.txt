@@ -1,0 +1,7 @@
+# Python 3.12+ (built and tested on 3.14.7)
+fastmcp==4.1.0
+pydantic-ai-slim[openai,mcp]==2.55.0
+openai==3.28.0
+python-dotenv==1.2.4
+fastapi==0.143.0
+uvicorn[standard]==0.54.0

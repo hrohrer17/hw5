@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "campus-customs": {
+      "command": "/Users/hdr/Documents/Grad School/1Y F1/AI Foundations/Homework 5/.venv/bin/python",
+      "args": [
+        "/Users/hdr/Documents/Grad School/1Y F1/AI Foundations/Homework 5/hw5/mcp_server/server.py"
+      ]
+    }
+  }
+}

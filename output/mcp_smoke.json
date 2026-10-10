@@ -1,0 +1,50 @@
+{
+  "description": "Smoke test of the campus-customs MCP server, run from the vibe coder (Claude Code, desktop app) with the server connected through .mcp.json. Each prompt is the student's question, typed word for word; each output is the exact JSON the tool returned over MCP.",
+  "server": "campus-customs",
+  "server_file": "mcp_server/server.py",
+  "database": "data/campus_customs_new.db",
+  "vibe_coder": "Claude Code (Claude desktop app, Code tab)",
+  "run_date": "2026-10-10",
+  "shop_date_today": "2026-08-31",
+  "tests": [
+    {
+      "prompt": "What is the price of a hoodie?",
+      "tool_name": "check_stock_and_pricing",
+      "mcp_tool_id": "mcp__campus-customs__check_stock_and_pricing",
+      "arguments": {"sku": "CC-HOOD-NAVY", "size": "M"},
+      "tool_output": {"found": true, "sku": "CC-HOOD-NAVY", "name": "Basic Hoodie Big Yale", "size": "M", "qty": 8, "location": "Aisle A", "unit_cost": 22, "list_price": 58, "margin_per_unit": 36},
+      "answer": "The shop's only hoodie, the Basic Hoodie Big Yale (CC-HOOD-NAVY), lists at $58. It costs the shop $22, a $36 margin per hoodie. Price is set per SKU, so it is the same in every size.",
+      "db_check": {
+        "query": "inventory JOIN pricing WHERE sku='CC-HOOD-NAVY' AND size='M'",
+        "db_values": {"qty": 8, "location": "Aisle A", "unit_cost": 22.0, "list_price": 58.0},
+        "matches": true
+      }
+    },
+    {
+      "prompt": "Who is our favorite vendor?",
+      "tool_name": "get_vendor_invoice",
+      "mcp_tool_id": "mcp__campus-customs__get_vendor_invoice",
+      "arguments": {"invoice_id": 501},
+      "tool_output": {"found": true, "invoice_id": 501, "amount": 840, "due_date": "2026-08-28", "status": "open", "description": "Rush reprint CC-TEE-WHITE S", "vendor_id": 1, "vendor_name": "Bulldog Print Co", "specialty": "apparel reprint", "lead_days": 5, "shop_date_today": "2026-08-31", "is_unpaid": true, "days_overdue": 3, "is_overdue": true},
+      "answer": "The database has no 'favorite vendor' field, so that can't be answered from the data. The only vendor the shop has an invoice with is Bulldog Print Co (apparel reprint, 5-day lead time). Its invoice 501 is $840 for a rush reprint of the CC-TEE-WHITE size S, due 2026-08-28, still open, and 3 days overdue as of the shop's date.",
+      "db_check": {
+        "query": "invoices JOIN vendors WHERE invoices.id=501; desk.date_today",
+        "db_values": {"amount": 840.0, "due_date": "2026-08-28", "status": "open", "vendor_name": "Bulldog Print Co", "specialty": "apparel reprint", "lead_days": 5, "date_today": "2026-08-31"},
+        "matches": true
+      }
+    },
+    {
+      "prompt": "How much is our lease per month?",
+      "tool_name": "get_lease_rent_due",
+      "mcp_tool_id": "mcp__campus-customs__get_lease_rent_due",
+      "arguments": {"lease_id": 1},
+      "tool_output": {"found": true, "lease_id": 1, "space_name": "Chapel Street shop", "landlord": "Elm City Properties", "monthly_rent": 2400, "next_due": "2026-09-02", "notes": null, "shop_date_today": "2026-08-31", "days_until_due": 2},
+      "answer": "Rent on the Chapel Street shop is $2,400 a month, paid to Elm City Properties. The next payment is due 2026-09-02, 2 days after the shop's date.",
+      "db_check": {
+        "query": "leases WHERE id=1; desk.date_today",
+        "db_values": {"space_name": "Chapel Street shop", "landlord": "Elm City Properties", "monthly_rent": 2400.0, "next_due": "2026-09-02", "date_today": "2026-08-31"},
+        "matches": true
+      }
+    }
+  ]
+}

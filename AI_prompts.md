@@ -3,7 +3,7 @@
 This is the log of what I typed to my vibe coder (Claude Code) for Homework 5, kept up to date as
 I work. Prompts are copied word for word.
 
-**Note on AI use:** I used AI to check my finished work against the assignment page.
+**Note on AI use:** I used Claude Code to build and draft from my prompts, and to check my finished work against the assignment page.
 
 ---
 

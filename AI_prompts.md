@@ -55,9 +55,11 @@ I work. Prompts are copied word for word.
 
 > All right, problem number four, we're going to add the MCP server to Vibe Coder and test each tool. So add the MCP server to this project. So the Vibe Coder can call the tools. Save the connection JSON text in .mcp.json at the project root. Or however you saved the local MPC server list. Once the vibe coder is connected, test each of the three MCP tools. Save the evidence in output/mcp_smoke.json . For every tool, include the prompt that I asked the tool name and the tool output, which must match values in data/campus_customs_new.db . so the Vibe Coder can call the tools. Save the connection JSON text in. at the project root, or however you saved the local MPC server list. Once the vibe coder is connected, test each of the three MCP tools. Save the evidence in. For every tool, include the prompt that I asked, the tool name, and the tool output, which must match values.
 
-**Prompt between setup and tests** (after Claude suggested running the tests in a new session):
+**Follow-up prompt** (sent between setup and tests, after Claude suggested running the tests in a new session):
 
 > I don't think this is what the homework had in mind. I need it to be all one session so that the log and other files are or have continuity. I think the way we've been doing it is fine.
+
+**What was lacking after the first prompt:** The first attempt would have tested the tools in a separate new session, which broke the one-session continuity of this log, so the follow-up kept everything in this session (the app was restarted so this session could load the server).
 
 **Test prompts (asked once the server was connected):**
 
@@ -84,6 +86,8 @@ I work. Prompts are copied word for word.
 **Follow-up prompt:**
 
 > Also for problem six. For each ticket's expected section, write who the boss should call first and why. All the agent delegations you expect. So not that you know the boss calls everyone. And then which MCP tools you expect that run to use. We don't want every specialist to get sent on every ticket. Because it's a waste of time and efficiency. Then once we make this plan, we'll compare it with what actually happens when the agents do resolve the three tickets.
+
+**What was lacking after the first prompt:** The first prompt didn't say what each Expected section had to contain, so the follow-up spelled it out: who the Boss calls first and why, every delegation we expect (not "Boss calls everyone"), and which MCP tools we expect.
 
 ---
 
@@ -120,9 +124,13 @@ I work. Prompts are copied word for word.
 
 > Uh, yeah, change the name to AI Foundation Student. HR. Why can't we finish ticket 103? Keep running it until it's resolved. That's what the directions for problem nine say. So I want you to include the actual section that we had to try it multiple times. Then send me a link to the board that I can double click and open and check it out.
 
+**What was lacking after the first prompt:** After the first prompt, ticket 103 was still in progress after two runs and the payments were approved under my real name, so the follow-up changed the approver name, asked to keep running 103 until it resolved, and asked for the Actual section to show the multiple attempts.
+
 **Second follow-up prompt** (after asking Claude what it thought, given the directions in earlier problems):
 
 > Okay let's change done - resolved means the team made it's decision
+
+**What was lacking after the first follow-up:** Five runs still left 103 in progress because the Boss's rules treated "waiting on cash or the customer" as unfinished, so this follow-up redefined resolved as "the team made its decision" (it resolved on the sixth run).
 
 ---
 
@@ -135,6 +143,8 @@ I work. Prompts are copied word for word.
 **Follow-up prompt:**
 
 > Tie every answer to this specific app and the three tickets that you ran. Use the ticket tabs and the cache tab on the same page as the evidence. Generic AI essays without campus customs details will score very, very low.
+
+**What was lacking after the first prompt:** The first prompt listed the questions but didn't require every answer to point back to Campus Customs evidence, so the follow-up asked to tie each answer to the three tickets using the ticket tabs and Cash tab on the same page.
 
 ---
 

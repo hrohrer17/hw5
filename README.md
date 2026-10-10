@@ -52,9 +52,10 @@ python mcp_server/server.py
 ```
 
 It's a stdio server, so it sits waiting for an MCP client to talk to it over standard input/output;
-that's normal. `.mcp.json` is the project MCP config we used to connect it to Claude Code (its
-paths point at our machine; change `command` and `args` to your own Python and this folder's
-`mcp_server/server.py`). `mcp_server/README.md` lists every tool.
+that's normal. To use the tools from Claude Code, open Claude Code in this `hw5/` folder and approve
+**campus-customs** when asked. `.mcp.json` works as is, with no paths to edit: it runs
+`mcp_server/server.py` with this folder's `.venv/bin/python` (from Setup), or `python3` if there's no
+`.venv`. `mcp_server/README.md` lists every tool.
 
 ## 3. Start the FastAPI backend
 

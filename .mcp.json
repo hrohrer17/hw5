@@ -1,9 +1,10 @@
 {
   "mcpServers": {
     "campus-customs": {
-      "command": "/Users/hdr/Documents/Grad School/1Y F1/AI Foundations/Homework 5/.venv/bin/python",
+      "command": "sh",
       "args": [
-        "/Users/hdr/Documents/Grad School/1Y F1/AI Foundations/Homework 5/hw5/mcp_server/server.py"
+        "-c",
+        "if [ -x .venv/bin/python ]; then exec .venv/bin/python mcp_server/server.py; else exec python3 mcp_server/server.py; fi"
       ]
     }
   }
